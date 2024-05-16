@@ -7,8 +7,8 @@ function CreateUserPage() {
     const [password, setPassword] = useState('');
 
 
-    const handleSignUp = async () => {
-
+    const handleSignUp = async (event: React.FormEvent) => {
+      event.preventDefault(); // Prevent the default form submission
 
         try {
             const response = await fetch('http://localhost:3000/users', {
@@ -24,7 +24,7 @@ function CreateUserPage() {
             if(response.ok) {
                 const data = await response.json();
                 console.log("response ok", data);
-                alert(`User ${data.user.username} created and account with balance ${data.account.balance} created`);
+                alert(`User ${data.username} created and account with balance ${data.amount} created`);
             } else {
                 throw new Error('Fel användarnamn eller lösenord');
             }

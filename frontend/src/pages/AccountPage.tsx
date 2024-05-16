@@ -29,7 +29,7 @@ function AccountPage() {
             if(response.ok) {
                 const data = await response.json();
                 console.log('data', data);
-                setBalance(data.balance);
+                setBalance(data.amount);
             } else {
                 console.error('Error:', response);
             }
